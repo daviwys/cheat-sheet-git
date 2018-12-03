@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/png" href="./img/git_icon.png" />	
+	<title>GIT : CHEAT SHEET</title>
+</head>
+<body id="top">
+	<header>
+		<h1>CHEAT SHEET ON GIT</h1>	
+	</header>
+	<!-- MENU OF NAVIGATE ++++++++++++++++++++++++++++++++++++++++++ -->
+	<nav>
+		<ul>
+			<li>Home</li>
+			<li><a href="./contact.html" title="Send a message">Contact</a></li>
+			<li><a href="./license.html" title="See">License</a></li>
+		</ul>
+	</nav>
+	<!-- MAIN CONTENT ++++++++++++++++++++++++++++++++++++++++++++++ -->
+		<section>
+			
+			<h2>Configure Git</h2>
+			<p>After installing Git, configure name and email address, ** in this order ** :</p>
+			<code>
+			$ git config --global user.name "name surname"
+			$ git config --global user.email "e-mail"
+			</code>
+			<p>From now on, my "commit" will indicate by whom (and his email) they were made.</p>
+
+			<h2>Initialize a project</h2>
+			<p>Place in the project folder and then do <code>$ git init</code><br />
+			This will create a hidden folder (.git) with everything GIT needs to manage the project.</p>
+			<h2>join an existing project</h2>
+			<code>
+			$ git clone <lt;repository URL&gt; &nbsp;&nbsp;&larr; Download a complete project and its version history 
+			$ git remote add <lt;my branch&gt; git@github.com:<lt;user&gt;/<lt;name of the projet&gt;.git &nbsp;&nbsp;&larr; here, we add a connection to the depot
+			</code>
+
+			<h2>Work whith Git</h2>
+			Definition of "add" &rarr; indexing 
+			Whenever you edit/add/delete code and/or file/folder do an "add",  and a "commit" and a "commit" as soon as the improvement is finished.
+			<table>
+				<tr>
+					<td>$ git add page.html style.css</td><td>here, 2 files at once</td>
+				</tr>
+				<tr>
+					<td>$ git commit -m "My comment"</td><td>Saves a snapshot of file(s) permanently in the version history</td> 
+				</tr>
+				<tr>
+					<td>$ git status</td><td>List all new files as well as those that have been modified to "commit"</td> 
+				</tr>
+				<tr>
+					<td>$ git diff</td><td>Shows all the changes since the last "git add"</td>
+				</tr>
+				<tr>
+					<td>$ git diff <lt;file></td><td>Displays the changes of 1 particular file since the last "git add" </td>
+				</tr>
+				<tr>
+					<td>$ git reset <lt;file></td><td>Removes the file from the index, but keeps its contents !</td>
+				</tr>
+				<tr>
+					<td>$ git show</td><td>View metadata and content changes included during the last "commit"</td>
+				</tr>
+			</table>
+			
+			<h3>on the remote repository</h3>
+			<table>
+				<tr>
+					<td>$ git remote</td><td>List the remote servers that you have registered</td>
+				</tr>
+				<tr>
+					<td>$ git remote -v</td><td>Displays the URL that Git has stored for each short name</td>
+				</tr>
+				<tr>
+					<td>$ git remote show <lt;remote name</td><td>Show info about a remote repository</td>
+				</tr>
+				<tr>
+					<td>$ git ls-remote</td><td>List the fingerprints of all branches</td>
+				</tr>
+			</table>
+
+			<h3>make changes to the project</h3>
+			<table>
+				<tr>
+					<td>$ git rm <lt;file</td><td>Deletes the file from the working directory & updates the index</td>
+				</tr>
+				<tr>
+					<td>$ git rm --cached <lt;file</td><td>Deletes the file from the version tracking system but preserves it locally</td>
+				</tr>
+				<tr>
+					<td>$ git mv <file> <lt;file_new_name</td><td>Renames the file and prepares the change for a "commit"</td>
+				</tr>
+			</table>
+
+			<h2>Cancel a "add"</h2>
+			<code>
+			$ git reset <lt;file
+			</code>
+
+			<h2>Cancel a "commit"</h2>
+			<table>
+				<tr>
+					<td>$ git reset HEAD</td><td>Cancel the last "commit</td>
+					<td>$ git reset HEAD^</td><td>cancels the penultimate "commit"</td>
+					<td>$ git reset d6d98923868578a7f38dea79833b56d0326fcba1</td><td>Undo a commit whose footprint is "d6 ..."</td>
+					<td>$ git reset d6d98923</td><td>short version of the previous command</td>
+				</tr>
+			</table>
+			
+			<h2>switch to a "commit" or "branch"</h2>
+			<code>
+			$ git checkout <lt;nom de la branche
+			$ git checkout <lt;empreinte du commit
+			</code>
+
+			<h2>List the commits</h2>
+			<p>Show the last x commits : <code>$ git log -n x</code></p> 
+
+			<h2>Redo commits</h2>
+			<code>
+			$ git reset <lt;commit	&nbsp;&nbsp;&larr; Cancel all commits after <lt;commit>gt; with the changes
+			$ git reset --hard <lt;commit &nbsp;&nbsp;&larr; Removes all history and changes made after the specified <lt;commit>gt;
+			</code>
+
+			<h2>Branches</h2>
+			
+			<h3>Create a branch</h3>
+			<p>&rarr; With 2 lines : create and switch on the new branch</p>
+			<code>
+			$ git branch <lt;name_new_branch
+			$ git checkout <lt;name_new_branch
+			</code>
+			
+			<p>&rarr; With 1 line only : create and switch</p>
+			<code>
+			$ git checkout -b <lt;name_new_branch
+			</code>
+
+			<h3>Delete a branch</h3>
+			<p>&larr; If the branch is local and is not created on the remote repository</p>
+			<code>
+			$ git branch -d <lt;name_local_branch
+			</code>
+			
+			<p>&rarr; If the branch is present on the romote repository</p>
+			<code>
+			$ git push origin --delete <lt;name_remote_branch
+			</code>
+
+			<h3>List the branches</h3>
+			<code>
+			$ git branch &nbsp;&nbsp;&larr; local
+			$ git branch -a &nbsp;&nbsp;&larr; local + remote
+			</code>
+
+			<h3>Check history of version</h3>
+			<code>	
+			$ git diff <lt;first_branch ... <lt;second_branch&gt; &nbsp;&nbsp;&larr; Show differences in content between 2 branches
+			$ git diff show <lt;commit &nbsp;&nbsp;&larr; Show changes to the metadata and content included in the specified commit
+			</code>
+
+			<h3>merging the branches</h3>
+			<code>
+			$ git merge <lt;name_branch &nbsp;&nbsp;&larr; Combines / merges the history of the specified branch into the current branch
+			</code>
+
+			<p>**To do the following, you must have created a new repository on github and set up his account with his SSH key !!**</p>
+
+			<h3>synchronize changes</h3>
+			<table>
+				<tr>
+					<td>$ git fetch <lt;name_of_repository</td><td>Get all the history of the named repository</td>
+				</tr>
+				<tr>
+					<td>$ git merge <lt;name_of_repository/<lt;branch&gt;</td><td>Merges the repository branch into the current local branch</td>
+				</tr>
+				<tr>
+					<td>$ git push <lt;alias <lt;branch&gt;</td><td>Send all commits from the local branch to GitHub</td>
+				</tr>
+				<tr>
+					<td>$ git pull</td><td>Retrieves all the repository history and incorporates changes</td>
+				</tr>
+				<tr>
+					<td>$ git push -u origin <lt;branch</td><td>Here, we update the "remote" by pushing the branch <lt;branch&gt;</td>
+				</tr>
+			</table>
+
+			<h3>Send a project to the project manager (Github)</h3>
+			<p>Make sure you are registered before;) and send commits to remote repository : <code>$ git push -u origin <lt;name_branch</code></p>
+			
+			<h3>Retrieve a project</h3>
+			<p>Update the local repository : <code>$ git pull &nbsp;&nbsp;&larr; We recover only the details of the modifications !</code></p>
+		</section>
+	<!-- FOOTER ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<footer>
+		<a href="./license.html" title="See">GNU GPL v3.0</a>
+		<a href="https://daviwys.github.io/cheat-sheet-terminal/" title="See cheat sheet on Terminal">Terminal</a>
+		<a href="https://daviwys.github.io/cheat-sheet-vim/" title="See cheat sheet on Vim">Vim</a>
+		<a href="#top" title="Return to the top">Top</a>
+	</footer>
+</body>
+</html>
