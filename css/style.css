@@ -1,0 +1,38 @@
+html, body {
+	font-family: verdana, serif;
+	color: #000000;
+	background-color: #FFFFFF;
+	padding: 0;
+	margin: 0;
+}
+h1 {
+	color: #FFFFFF;
+	text-shadow: rgb(50, 50, 50) 3px 3px 2px;
+}
+header {
+	background-color: #00AA00;
+	margin: 0;
+	padding: 20px;
+	text-align: center;
+	border: 0;
+}
+section {
+	padding: 10px;
+}
+ul li {
+	display: inline;
+}
+h2 {
+	color: #222222;
+}
+h3 {
+	color: #333333;
+	text-decoration: underline;
+}
+code {
+	background-color: #DDDDDD;
+	padding: 5px;
+}
+.comment {
+color: #666666;
+}
